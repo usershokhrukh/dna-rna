@@ -108,5 +108,38 @@ body {
     border-radius: 5px;
     box-shadow: 0px 0px 10px -1px white;
     padding: 5px;
+    width: 100%;             /* Blok kengligi */
+    word-break: break-all;   /* Harflarni har qanday joydan pastga tushiradi */
+    white-space: normal;
   }
+
+  &__bottom {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    padding: 30px 0px 0px 0px;
+  }
+
+  &__copy {
+    position: absolute;
+    top: 0px;
+    right:  0px;
+    width: 25px;
+    height: 25px;
+    color: gray;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+
+  }
+}
+
+
+.warning {
+  color: red !important;
 }
