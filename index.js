@@ -6,19 +6,27 @@ const elCopy = document.querySelector(".section__copy");
 const elLeftBoxes = document.querySelectorAll(".left__boxes");
 let windowStatus = 0;
 let choose = false;
-for(var i = 0; i < elLeftBoxes.length; i++) {
+for (var i = 0; i < elLeftBoxes.length; i++) {
   leftBoxes(i);
 }
 
 function leftBoxes(i) {
-  elLeftBoxes[i].addEventListener("click", ()=> {
+  elLeftBoxes[i].addEventListener("click", () => {
     windowStatus = i;
-    leftBoxesStatus(i)
-  })
+    leftBoxesStatus(i);
+  });
 }
 function leftBoxesStatus(index) {
-  index == 1 ? elBoxes.classList.add("none") : true;
-  index == 0 ? elBoxes.classList.remove("none") : true;
+  if(index == 1) {
+    elBoxes.classList.add("none");
+    elLabel.textContent = "DNA";
+    elForm.reset();
+  }else if (index == 0) {
+    elBoxes.classList.remove("none") ;
+    choose = false;
+    elForm.reset();
+
+  }
 }
 elForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -37,12 +45,33 @@ elForm.addEventListener("submit", (e) => {
   } else {
     elLabel.classList.remove("warning");
     if (choose || windowStatus != 0) {
-      if(windowStatus == 0) {
+      if (windowStatus == 0) {
         elLabel.textContent = "DNA => RNA";
       }
       if (checkDNA(elInput)) {
-        const rna = elInput.replaceAll("T", "U");
-        elOutput.textContent = `${rna}`;
+        if (windowStatus == 0) {
+          const rna = elInput.replaceAll("T", "U");
+          elOutput.textContent = `${rna}`;
+        }else if(windowStatus == 1) {
+          let dnaReverse = "";
+          for(var i = 0; i < elInput.length; i++) {
+            switch(elInput[i]) {
+              case "A":
+                dnaReverse += "T";
+                break;
+              case "T":
+                dnaReverse += "A";
+                break;
+              case "G":
+                dnaReverse += "C";
+                break;
+              case "C":
+                dnaReverse += "G";
+                break
+            }
+          }
+          elOutput.textContent = `${dnaReverse}`;
+        }
       } else {
         elLabel.classList.add("warning");
         elLabel.textContent = "DNA isn't right!";
