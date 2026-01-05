@@ -3,7 +3,23 @@ const elBoxes = document.querySelector(".section__top-boxes");
 const elLabel = document.querySelector(".section__label");
 const elOutput = document.querySelector(".section__output");
 const elCopy = document.querySelector(".section__copy");
+const elLeftBoxes = document.querySelectorAll(".left__boxes");
+let windowStatus = 0;
 let choose = false;
+for(var i = 0; i < elLeftBoxes.length; i++) {
+  leftBoxes(i);
+}
+
+function leftBoxes(i) {
+  elLeftBoxes[i].addEventListener("click", ()=> {
+    windowStatus = i;
+    leftBoxesStatus(i)
+  })
+}
+function leftBoxesStatus(index) {
+  index == 1 ? elBoxes.classList.add("none") : true;
+  index == 0 ? elBoxes.classList.remove("none") : true;
+}
 elForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const elInput = elForm["input"].value.trim().toUpperCase();
@@ -11,7 +27,7 @@ elForm.addEventListener("submit", (e) => {
     elLabel.classList.add("warning");
     elLabel.textContent = "Fill DNA!";
     setTimeout(() => {
-      if (choose) {
+      if (choose && windowStatus == 0) {
         elLabel.textContent = "DNA => RNA";
       } else {
         elLabel.textContent = "DNA";
@@ -20,8 +36,10 @@ elForm.addEventListener("submit", (e) => {
     }, 800);
   } else {
     elLabel.classList.remove("warning");
-    if (choose) {
-      elLabel.textContent = "DNA => RNA";
+    if (choose || windowStatus != 0) {
+      if(windowStatus == 0) {
+        elLabel.textContent = "DNA => RNA";
+      }
       if (checkDNA(elInput)) {
         const rna = elInput.replaceAll("T", "U");
         elOutput.textContent = `${rna}`;

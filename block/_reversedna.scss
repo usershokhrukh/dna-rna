@@ -1,0 +1,42 @@
+.left {
+  @include display();
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(35, 35, 35, 0.561);
+  flex-grow: 0.7;
+  max-width: 300px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0px;
+
+  &__boxes {
+    @include display();
+    @include hover();
+    justify-content: start;
+    background-color: rgb(22, 23, 35);
+    width: 90%;
+    border-radius: 5px;
+    padding: 10px;
+    gap: 5px
+  }
+
+  &__boxes-text {
+    font-family: sans-serif;
+    font-size: 14px;
+    color: rgb(188, 186, 186);
+  }
+}
+
+@media (max-width: 500px) {
+  .left {
+    max-width: 100px;
+
+    &__boxes-text {
+      display: none;
+    }
+
+    &__boxes {
+      justify-content: center;
+    }
+  }
+}
