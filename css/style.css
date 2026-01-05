@@ -8,6 +8,10 @@ body {
   background-color: rgb(27, 27, 39);
 }
 
+.warning {
+  color: red !important;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -121,8 +125,4 @@ body {
 }
 .section__copy:active {
   opacity: 1;
-}
-
-.warning {
-  color: red !important;
 }/*# sourceMappingURL=style.css.map */
