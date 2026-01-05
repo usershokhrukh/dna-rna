@@ -5,9 +5,21 @@
 }
 
 body {
-  background-color: rgb(27, 27, 39);
+  padding: 0;
+  background-color: rgb(22, 22, 24);
 }
 
 .warning {
   color: red !important;
+}
+
+.main {
+  @include display();
+  position: relative;
+  align-items: start;
+  min-height: 100vh;
+}
+
+.none {
+  display: none !important;
 }

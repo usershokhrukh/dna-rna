@@ -5,11 +5,25 @@
 }
 
 body {
-  background-color: rgb(27, 27, 39);
+  padding: 0;
+  background-color: rgb(22, 22, 24);
 }
 
 .warning {
   color: red !important;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  align-items: start;
+  min-height: 100vh;
+}
+
+.none {
+  display: none !important;
 }
 
 .section {
@@ -20,6 +34,7 @@ body {
   margin: 15% auto;
   gap: 20px;
   padding: 20px;
+  flex-grow: 2;
 }
 .section__top {
   display: flex;
@@ -32,6 +47,7 @@ body {
 }
 .section__top-boxes {
   display: flex;
+  transition: all 0.3s ease-in-out;
   background-color: rgba(21, 157, 194, 0.594);
   font-family: sans-serif;
   font-size: 20px;
@@ -47,6 +63,7 @@ body {
 }
 .section__top-boxes:active {
   opacity: 1;
+  transform: scale(0.9);
 }
 .section__form {
   position: relative;
@@ -59,6 +76,7 @@ body {
   padding: 0px 0px 45px 0px;
 }
 .section__button {
+  transition: all 0.3s ease-in-out;
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -77,6 +95,7 @@ body {
 }
 .section__button:active {
   opacity: 1;
+  transform: scale(0.9);
 }
 .section__label {
   font-family: sans-serif;
@@ -125,4 +144,54 @@ body {
 }
 .section__copy:active {
   opacity: 1;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(35, 35, 35, 0.561);
+  flex-grow: 0.7;
+  max-width: 300px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0px;
+}
+.left__boxes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  justify-content: start;
+  background-color: rgb(22, 23, 35);
+  width: 90%;
+  border-radius: 5px;
+  padding: 10px;
+  gap: 5px;
+}
+.left__boxes:hover {
+  opacity: 0.8;
+}
+.left__boxes:active {
+  opacity: 1;
+  transform: scale(0.9);
+}
+.left__boxes-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: rgb(188, 186, 186);
+}
+
+@media (max-width: 500px) {
+  .left {
+    max-width: 100px;
+  }
+  .left__boxes-text {
+    display: none;
+  }
+  .left__boxes {
+    justify-content: center;
+  }
 }/*# sourceMappingURL=style.css.map */
